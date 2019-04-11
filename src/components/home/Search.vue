@@ -1,6 +1,8 @@
 <template>
 	<div class="hello">
-		HelloWorld
+		
+		search
+		
 	</div>
 </template>
 
@@ -13,12 +15,13 @@
 		methods: {
 			
 		},
+		created:function(){
+			
+		}
 	}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-	.hello{
-		font-size: 0.3rem;
-	}
+
 </style>

@@ -18,7 +18,7 @@ Vue.use(VueAxios, axios)
 const store = new Vuex.Store({
 	//state,表示状态，作用是储存各个组件共用的数据
 	state: {
-		
+		isShowTabbar:true
 	},
 
 
@@ -40,11 +40,10 @@ const store = new Vuex.Store({
 	// this.$store.commit("setNavTitle","book")
 	mutations: {
 		
-		
-		
 		//设置，左侧导航栏是否折叠
-		setisFlex: function(state, title) {
-			state.isFlex = title
+		setisShowTabbar: function(state, title) {
+			console.log(title)
+			state.isShowTabbar = title
 		},
 
 	},

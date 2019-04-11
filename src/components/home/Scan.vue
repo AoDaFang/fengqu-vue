@@ -1,6 +1,8 @@
 <template>
 	<div class="hello">
-		HelloWorld
+		
+		scan
+		
 	</div>
 </template>
 
@@ -18,7 +20,5 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-	.hello{
-		font-size: 0.3rem;
-	}
+
 </style>

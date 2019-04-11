@@ -1,7 +1,7 @@
 import axios from 'axios'
 //restful api get post put delete
 // 这里面封装的是各种请求方法
-var host = "https://m.wanzhoumo.com/"
+var host = "http://localhost:3000/"
 
 function request(params) {
 	
