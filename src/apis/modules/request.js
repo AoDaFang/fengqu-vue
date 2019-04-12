@@ -7,7 +7,6 @@ function request(params) {
 	
 	if(params.method == 'get'){
 		return new Promise((resolve, reject) => {
-			console.log('request. ',params)
 			axios.get(host + params.url, {params:params.params})
 				.then((response) => {
 					resolve(response.data);

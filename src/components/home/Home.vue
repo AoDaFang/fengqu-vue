@@ -12,13 +12,13 @@
 		<div class="home-main-swiper">
 			<div class="swiper-container">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide"><home-index></home-index></div>
+					<div class="swiper-slide swiper-no-swiping"><home-index></home-index></div>
 					
-					<div class="swiper-slide">Slide 2</div>
-					<div class="swiper-slide">Slide 3</div>
-					<div class="swiper-slide">Slide 4</div>
-					<div class="swiper-slide">Slide 5</div>
-					<div class="swiper-slide">Slide 6</div>
+					<div class="swiper-slide swiper-no-swiping">Slide 2</div>
+					<div class="swiper-slide swiper-no-swiping">Slide 3</div>
+					<div class="swiper-slide swiper-no-swiping">Slide 4</div>
+					<div class="swiper-slide swiper-no-swiping">Slide 5</div>
+					<div class="swiper-slide swiper-no-swiping">Slide 6</div>
 				</div>
 				<!-- 如果需要分页器 -->
 				<div class="swiper-pagination"></div>
@@ -86,6 +86,7 @@
 					},
 				},
 			});
+			
 		},
 		components: {
 			'home-navbar': HomeNavBar,

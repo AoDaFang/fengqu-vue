@@ -37,4 +37,8 @@
 	.swiper-pagination-bullet-active{
 		border-bottom: 2px solid #da261a;
 	}
+	a{
+		text-decoration: none;
+		color: #000;
+	}
 </style>

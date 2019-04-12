@@ -75,7 +75,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- 活动按钮 -->
 		<div class="active-huge-btn">
 			<div>
@@ -83,6 +83,25 @@
 			</div>
 			<div>
 				<img src="../../img/home_active_btn2.jpg" alt="">
+			</div>
+		</div>
+		
+		<!-- 首页活动块 -->
+		<div class="home_active_wrap" v-for="(item, index) of home_active_list" :key="index">
+			<div class="home_active_img"><img :src="item.img_url" alt=""></div>
+			<div class="home_active_goods_list">
+				<div class="home_active_goods_item" v-for="(goods, index_in) in item.list" :key="index_in">
+						<div><img :src="goods.img_url" alt=""></div>
+						<div class="home_active_goods_name">{{goods.name}}</div>
+						<div class="home_active_goods_price">￥{{goods.price}}</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 商品列表 -->
+		<div class="goods-list">
+			<div class="goods-item" v-for="(item, index) in goods_list" :key="index">
+				
 			</div>
 		</div>
 
@@ -95,19 +114,26 @@
 		name: 'HelloWorld',
 		data() {
 			return {
-				ads_list: [],
-				ltn_goods_list: [],
+				ads_list: [],//轮播图
+				ltn_goods_list: [],//闪购
+				home_active_list:[],//大活动块
+				goods_list:[],//商品列表
 
 				//闪购倒计时
 				ltn_hour: "07",
 				ltn_minute: "01",
 				ltn_second: "02",
+				
+				page:1,
+				size:6,
 			}
 		},
 		created: function() {
 			this.getAdsList()
 			this.dealLightningTime()
 			this.getLtnGoods()
+			this.getHomeActive();
+			this.getGoodsList()
 		},
 		mounted: function() {},
 		methods: {
@@ -116,7 +142,6 @@
 				var res = await this.api.homeApi.adsList()
 				if (res.code == 1) {
 					this.ads_list = res.list;
-
 				} else {
 					console.log("轮播图数据下载出错")
 				}
@@ -127,12 +152,48 @@
 				var res = await this.api.homeApi.ltnGoods()
 				if (res.code == 1) {
 					this.ltn_goods_list = res.list;
-					console.log(this.ltn_goods_list)
 
 				} else {
 					console.log("闪购数据下载出错")
 				}
 			},
+			//下载活动列表
+			getHomeActive: async function () {
+				var res = await this.api.homeApi.homeActive();
+				if (res.code == 1) {
+					this.home_active_list = res.list;
+				
+				} else {
+					console.log("活动列表数据下载出错")
+				}
+			},
+			//下载商品列表
+			getGoodsList: async function(){
+				var dict = {
+					page:this.page,
+					size:this.size
+				}
+				var res = await this.api.homeApi.goosList(dict);
+				
+				//若请求第一页
+				if(this.page == 1){
+					if (res.code == 1) {
+						this.goods_list = res.list;
+					} else {
+						console.log("商品数据下载出错")
+					}
+				}else{//若请求其他页面
+					if (res.code == 1) {
+						var new_list = this.goods_list.concat(res.list);
+						this.goods_list = new_list
+					} else {
+						console.log("商品数据下载出错")
+					}
+				}
+				
+				
+			},
+			
 
 			//处理闪购倒计时 lightning
 			dealLightningTime: function() {
@@ -231,7 +292,7 @@
 		width: 100%;
 	}
 
-	
+
 	.lightning_title {
 		font-size: 0.3rem;
 		font-weight: bold;
@@ -253,7 +314,13 @@
 		overflow: scroll;
 		width: 100%;
 		margin-top: 10px;
-		z-index: 99999999999999999;
+	}
+
+	.lightning_goods::-webkit-scrollbar {
+		width: 0;
+		height: 0;
+		opacity: 0;
+		display: none;
 	}
 
 	.lightning_goods_item {
@@ -268,10 +335,11 @@
 		width: 2.16rem;
 		height: 2.16rem;
 	}
-	
-	.ltn_item_info{
+
+	.ltn_item_info {
 		margin-left: 0.3rem;
 	}
+
 	.ltn_item_name {
 		font-size: 0.23rem;
 		font-weight: bold;
@@ -284,36 +352,114 @@
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
 	}
-	.ltn_progress{
+
+	.ltn_progress {
 		width: 1.5rem;
 		height: 0.15rem;
 		border-radius: 10px;
 		background-color: #fbecec;
 		margin-top: 0.4rem;
 	}
-	.ltn_progress_in{
+
+	.ltn_progress_in {
 		height: 0.15rem;
 		border-radius: 10px;
 		background-color: #e3393f;
 	}
-	.ltn_item_price{
+
+	.ltn_item_price {
 		font-size: 0.23rem;
 		font-weight: bold;
 		color: #d22220;
 		margin-top: 0.2rem;
 	}
-	
-	.active-huge-btn{
+
+	.active-huge-btn {
 		display: flex;
 		justify-content: space-around;
 		margin-top: 0.3rem;
 	}
-	.active-huge-btn div{
+
+	.active-huge-btn div {
 		width: 3.3rem;
 		height: 1.7rem;
 	}
-	.active-huge-btn img{
+
+	.active-huge-btn img {
 		width: 100%;
 		height: 100%;
+	}
+	
+	.home_active_wrap{
+		width: 100%;
+		height: 6.3rem;
+		position: relative;
+		margin-top: 0.2rem;
+	}
+	.home_active_img{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 6.3rem;
+	}
+	.home_active_img>img{
+		width: 100%;
+		height: 100%;	
+	}
+	.home_active_goods_list{
+		position: absolute;
+		top: 2.75rem;
+		left: 0.23rem;
+		height: 3.25rem;
+		width: 7.25rem;
+		overflow-x: scroll;
+		background-color: #fff;
+		display: flex;
+		flex-wrap: nowrap;
+		z-index: 999;
+	}
+	.home_active_goods_list::-webkit-scrollbar {
+		width: 0;
+		height: 0;
+		opacity: 0;
+		display: none;
+	}
+	.home_active_goods_item{
+		width: 2.1rem;
+		border-right: 1px solid #e5e5e5;
+		box-sizing: border-box;
+		font-size: 0.2rem;
+		padding: 0.05rem;
+	}
+	.home_active_goods_item img{
+		width: 2rem;
+	}
+	.home_active_goods_name{
+		overflow: hidden;
+		text-align: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+	.home_active_goods_price{
+		font-size: 0.21rem;
+		color: #923125;
+		font-weight: bold;
+		margin-top: 0.2rem;
+	}
+	.goods-list{
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.goods-item{
+		min-width: 3.54rem;
+		height: 5.39rem;
+		border-top: 0.01rem  solid #e5e5e5;
+		border-bottom: 0.01rem  solid #e5e5e5;
+		box-sizing: border-box;
+	}
+	.goods-item:nth-child(odd){
+		border-right: 0.01rem solid #e5e5e5;
 	}
 </style>
