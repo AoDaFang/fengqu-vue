@@ -17,8 +17,13 @@ var homeActiveUrl = 'home/homeactive'
 
 //获取商品列表
 //Get
-var goosListUrl = 'goods'
+var goodsListUrl = 'goods'
 // http://localhost:3000/goods
+
+//搜索商品接口
+//GET
+var goodsSearchUrl = 'goods/search'
+//http://localhost:3000/goods/search?name=%E8%9B%8B%E7%99%BD
 
 //获取上方导航条的方法
 function adsList(params) {
@@ -45,9 +50,17 @@ function homeActive(params) {
     })
 }
 //获取商品列表
-function goosList(params) {
+function goodsList(params) {
     return request.request({
-        url: goosListUrl,
+        url: goodsListUrl,
+        method: 'get',
+        params: params
+    })
+}
+//搜索商品
+function goodsSearch(params) {
+    return request.request({
+        url: goodsSearchUrl,
         method: 'get',
         params: params
     })
@@ -56,5 +69,5 @@ function goosList(params) {
 
 export default {
     adsList, ltnGoods, homeActive,
-	goosList, 
+	goodsList, goodsSearch, 
 }

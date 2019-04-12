@@ -2,12 +2,14 @@
 	<div class="home-index">
 
 		<!-- index页轮播	 -->
-		<el-carousel style="z-index: 999; position: relative; border-radius: 10px; overflow: hidden; " :interval="5000" arrow="always"
-		 height="2.82rem">
-			<el-carousel-item v-for="(item,index) in ads_list" :key="index">
-				<img :src="item.img_url" alt="">
-			</el-carousel-item>
-		</el-carousel>
+		<div class="index-swiper">
+			<el-carousel style="z-index: 999; position: relative; border-radius: 10px; overflow: hidden; " :interval="5000" arrow="always"
+			 height="2.82rem">
+				<el-carousel-item v-for="(item,index) in ads_list" :key="index">
+					<img :src="item.img_url" alt="">
+				</el-carousel-item>
+			</el-carousel>
+		</div>
 
 		<!-- 活动大按钮 -->
 		<div class="active-big-btn">
@@ -101,8 +103,11 @@
 		<!-- 商品列表 -->
 		<div class="goods-list">
 			<div class="goods-item" v-for="(item, index) in goods_list" :key="index">
-				
+				<div class="goods-item-img"><img :src="item.img_url" alt=""></div>
+				<div class="goods-item-name">{{item.name}}</div>
+				<div class="goods-item-price">￥{{item.price}}</div>
 			</div>
+			
 		</div>
 
 	</div>
@@ -173,7 +178,7 @@
 					page:this.page,
 					size:this.size
 				}
-				var res = await this.api.homeApi.goosList(dict);
+				var res = await this.api.homeApi.goodsList(dict);
 				
 				//若请求第一页
 				if(this.page == 1){
@@ -244,7 +249,10 @@
 	.home-index-swiper .swiper-slide {
 		background-color: yellow;
 	}
-
+	.index-swiper{
+		padding-left: 0.15rem;
+		padding-right: 0.15rem;
+	}
 	.el-carousel {
 		margin-top: 0.1rem;
 		border-radius: 5px;
@@ -298,6 +306,7 @@
 		font-weight: bold;
 		display: flex;
 		justify-content: space-between;
+		padding: 0.15rem;
 	}
 
 	.lightning_title span {
@@ -451,6 +460,8 @@
 	.goods-list{
 		display: flex;
 		flex-wrap: wrap;
+		margin-top: 0.2rem;
+		margin-left: 0.2rem;
 	}
 	.goods-item{
 		min-width: 3.54rem;
@@ -461,5 +472,31 @@
 	}
 	.goods-item:nth-child(odd){
 		border-right: 0.01rem solid #e5e5e5;
+	}
+	.goods-item{
+		font-size: 0.3rem;
+	}
+	.goods-item-img{
+		height: 3.59rem;
+		width: 3.54rem;
+		margin: 0 auto;
+	}
+	.goods-item-img img{
+		width: 100%;
+		height: 100%;
+	}
+	.goods-item-name{
+		overflow: hidden;
+		text-align: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		width: 3.14rem;
+		margin: 0.2rem auto;
+	}
+	.goods-item-price{
+		color: #d12923;
+		font-weight: bold;
+		margin-left: 0.2rem;
 	}
 </style>

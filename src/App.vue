@@ -41,4 +41,7 @@
 		text-decoration: none;
 		color: #000;
 	}
+	body{
+		margin: 0;
+	}
 </style>
