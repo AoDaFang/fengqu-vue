@@ -5,7 +5,7 @@
 		<router-link to="/read" class="tabbar2">分类</router-link>
 		<router-link to="/music" class="tabbar3">有趣</router-link>
 		<router-link to="/movie" class="tabbar4">购物车</router-link>
-		<router-link to="/123" class="tabbar5">我的</router-link>
+		<router-link to="/user" class="tabbar5">我的</router-link>
 	</div>
 </template>
 

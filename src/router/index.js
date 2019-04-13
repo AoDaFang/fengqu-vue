@@ -5,6 +5,10 @@ import Home from '@/components/home/Home'
 import Scan from '@/components/home/Scan'
 import Message from '@/components/home/Message'
 import Search from '@/components/home/Search'
+import User from '@/components/user/User'
+import Login from '@/components/user/Login'
+import Register from '@/components/user/Register'
+
 
 Vue.use(Router)
 
@@ -38,6 +42,22 @@ export default new Router({
 			children: [
 					
 			]
+		},
+		{
+			path:'/user',
+			name:'User',
+			component:User,
+		},
+		{
+			path:"/login",
+			name:"Login",
+			component:Login
+		},
+		,
+		{
+			path:"/register",
+			name:"Register",
+			component:Register
 		}
 	]
 })
