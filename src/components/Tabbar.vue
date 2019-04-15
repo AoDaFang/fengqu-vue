@@ -2,9 +2,9 @@
 <template>
 	<div class="tab_bar" v-if="$store.state.isShowTabbar">
 		<router-link to="/home" class="tabbar1">海淘</router-link>
-		<router-link to="/read" class="tabbar2">分类</router-link>
-		<router-link to="/music" class="tabbar3">有趣</router-link>
-		<router-link to="/movie" class="tabbar4">购物车</router-link>
+		<router-link to="/classification" class="tabbar2">分类</router-link>
+		<router-link to="/amusing" class="tabbar3">有趣</router-link>
+		<router-link to="/cart" class="tabbar4">购物车</router-link>
 		<router-link to="/user" class="tabbar5">我的</router-link>
 	</div>
 </template>

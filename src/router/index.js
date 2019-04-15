@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import Home from '@/components/home/Home'
 import Scan from '@/components/home/Scan'
 import Message from '@/components/home/Message'
@@ -8,7 +7,9 @@ import Search from '@/components/home/Search'
 import User from '@/components/user/User'
 import Login from '@/components/user/Login'
 import Register from '@/components/user/Register'
-
+import Cart from '@/components/cart/Cart'
+import Amusing from '@/components/amusing/Amusing'
+import Classification from '@/components/classification/Classification'
 
 Vue.use(Router)
 
@@ -32,6 +33,23 @@ export default new Router({
 			path: '/message',
 			name: 'Message',
 			component: Message
+		},
+		
+		{
+			path: '/cart',
+			name: 'Cart',
+			component: Cart
+		},
+		
+		{
+			path: '/amusing',
+			name: 'Amusing',
+			component: Amusing
+		},
+		{
+			path: '/classification',
+			name: 'Classification',
+			component: Classification
 		},
 
 

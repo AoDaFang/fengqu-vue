@@ -17,7 +17,18 @@
 			this.$router.beforeEach((to, from, next) => {
 				if (to.path == "/home") {
 					this.$store.commit("setisShowTabbar", true);
-				} else {
+				} else if (to.path == "/cart") {
+					this.$store.commit("setisShowTabbar", true);
+				} else if (to.path == "/classification") {
+					this.$store.commit("setisShowTabbar", true);
+				}
+				else if (to.path == "/amusing") {
+					this.$store.commit("setisShowTabbar", true);
+				}
+				else if (to.path == "/user") {
+					this.$store.commit("setisShowTabbar", true);
+				}
+				else {
 					this.$store.commit("setisShowTabbar", false);
 				}
 				next();
@@ -30,13 +41,13 @@
 <style>
 	
 	html{
-		min-height: 100%;
+		height: 100%;
 	}
 	body{
-		min-height: 100%;
+		height: 100%;
 	}
 	#app{
-		min-height: 100%;
+		height: 100%;
 	}
 	
 	

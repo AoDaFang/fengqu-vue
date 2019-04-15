@@ -3,8 +3,9 @@ import Vue from 'vue'
 //vuex
 import Vuex from 'vuex'
 
-//引入interface文件
-// import api from '@/interface/interface.js'
+
+// 引入interface文件
+import api from '@/apis/index.js'
 
 //加载Vuex
 Vue.use(Vuex)
@@ -18,7 +19,9 @@ Vue.use(VueAxios, axios)
 const store = new Vuex.Store({
 	//state,表示状态，作用是储存各个组件共用的数据
 	state: {
-		isShowTabbar:true
+		isShowTabbar:true,
+		//购物车数据
+		cartList:[]
 	},
 
 
@@ -42,7 +45,6 @@ const store = new Vuex.Store({
 		
 		//设置，左侧导航栏是否折叠
 		setisShowTabbar: function(state, title) {
-			console.log(title)
 			state.isShowTabbar = title
 		},
 
@@ -50,15 +52,14 @@ const store = new Vuex.Store({
 
 	//4.action 表示动作， 要求异步修改state中的值, 需要在这里编写函数
 	actions: {
-		requestBookList: function() {
-			var url = api.bookListUrl
-			axios.get(url).then(res => {
-
-				//调用mutations中的方法
-				this.commit("setBookList", res.data.result)
-			}).catch(error => {
-				console.log(error)
-			})
+		requestCartList: async function() {
+			var res = await api.cartApi.cartList()
+			
+			for(var item of res.list){
+				item.isSelected =true
+			}
+			this.cartList = res.list
+			
 		}
 	}
 })

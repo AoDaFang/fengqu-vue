@@ -38,7 +38,8 @@
 				}
 				var res = await this.api.userApi.login(dict)
 				
-
+				window.localStorage.user = JSON.stringify(res.user)
+				
 				if (res.code == 1) {
 					this.$message({
 						message: '登录成功',

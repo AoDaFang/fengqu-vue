@@ -43,7 +43,6 @@ function request(params) {
 	
 	if(params.method == 'delete'){
 		return new Promise((resolve, reject) => {
-			console.log('request. ',params)
 			axios.delete(host + params.url, {data:params.params})
 				.then((response) => {
 					resolve(response.data);
