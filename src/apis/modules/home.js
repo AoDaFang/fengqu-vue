@@ -25,6 +25,12 @@ var goodsListUrl = 'goods'
 var goodsSearchUrl = 'goods/search'
 //http://localhost:3000/goods/search?name=%E8%9B%8B%E7%99%BD
 
+//根据id获取商品的信息
+//get
+var goodsDetailUrl = 'goods/goodsdetail';
+// http://localhost:3000/goods/goodsdetail?id=1
+
+
 //获取上方导航条的方法
 function adsList(params) {
     return request.request({
@@ -66,8 +72,16 @@ function goodsSearch(params) {
     })
 }
 
+function goodsDetail(params) {
+    return request.request({
+        url: goodsDetailUrl,
+        method: 'get',
+        params: params
+    })
+}
+
 
 export default {
     adsList, ltnGoods, homeActive,
-	goodsList, goodsSearch, 
+	goodsList, goodsSearch, goodsDetail
 }

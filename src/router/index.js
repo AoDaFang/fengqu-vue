@@ -12,9 +12,12 @@ import Amusing from '@/components/amusing/Amusing'
 import Classification from '@/components/classification/Classification'
 import GoodsDetail from '@/components/goods/GoodsDetail'
 
+//引入store
+import store from '@/store/store.js'
+
 Vue.use(Router)
 
-export default new Router({
+var r =  new Router({
 	routes: [{
 			path: '/',
 			name: 'index',
@@ -83,3 +86,29 @@ export default new Router({
 		}
 	]
 })
+
+// 路由守卫
+r.beforeEach((to, from, next) => {
+	if (to.path == "/home") {
+		store.commit("setisShowTabbar", true);
+	} 
+	else if (to.path == "/cart") {
+		store.commit("setisShowTabbar", true);
+	} 
+	else if (to.path == "/classification") {
+		store.commit("setisShowTabbar", true);
+	}
+	else if (to.path == "/amusing") {
+		store.commit("setisShowTabbar", true);
+	}
+	else if (to.path == "/user") {
+		store.commit("setisShowTabbar", true);
+	}
+	else {
+		store.commit("setisShowTabbar", false);
+	}
+	next();
+});
+
+
+export default r;

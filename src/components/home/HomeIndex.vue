@@ -93,9 +93,11 @@
 			<div class="home_active_img"><img :src="item.img_url" alt=""></div>
 			<div class="home_active_goods_list">
 				<div class="home_active_goods_item" v-for="(goods, index_in) in item.list" :key="index_in">
+					<router-link :to="'/goodsdetail/' + goods.id">
 						<div><img :src="goods.img_url" alt=""></div>
 						<div class="home_active_goods_name">{{goods.name}}</div>
 						<div class="home_active_goods_price">￥{{goods.price}}</div>
+					</router-link>
 				</div>
 			</div>
 		</div>
