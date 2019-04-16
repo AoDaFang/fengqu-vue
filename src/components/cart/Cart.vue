@@ -60,8 +60,9 @@
 			}
 		},
 		created: async function() {
+			//在store中获取list
 			await this.$store.dispatch("requestCartList")
-			console.log(this.$store.cartList)
+			this.goods_list = this.$store.state.cartList
 			
 			//判定是否登录
 			if (!window.localStorage.getItem("isLogin")) {
@@ -74,19 +75,9 @@
 					type: 'warning'
 				});
 			}
-			this.getCartList()
 			this.user = JSON.parse(localStorage.user)
 		},
 		methods: {
-			getCartList: async function(){
-				var res = await this.api.cartApi.cartList()
-				
-				for(var item of res.list){
-					item.isSelected =true
-				}
-				
-				this.goods_list = res.list
-			},
 			//更改商品数量
 			dealModifyNum:async function(index,value){
 				var dict = {
@@ -94,7 +85,7 @@
 					goods_id : this.goods_list[index].goods_detail.id,
 					num:value
 				}
-				var res = await this.api.cartApi.add(dict)
+				var res = await this.api.cartApi.modify(dict)
 				console.log(res)
 			},
 			
@@ -139,7 +130,9 @@
 						var res = await this.api.cartApi.deleteItem(dict)
 					}
 				}
-				this.getCartList()
+				//在store中获取list
+				await this.$store.dispatch("requestCartList")
+				this.goods_list = this.$store.cartList
 			}
 		},
 		computed:{

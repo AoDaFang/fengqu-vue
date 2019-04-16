@@ -4,7 +4,12 @@
 		<router-link to="/home" class="tabbar1">海淘</router-link>
 		<router-link to="/classification" class="tabbar2">分类</router-link>
 		<router-link to="/amusing" class="tabbar3">有趣</router-link>
-		<router-link to="/cart" class="tabbar4">购物车</router-link>
+		<div style="position: relative;">
+			<el-badge :value="goods_count" class="item">
+				<div class="tabbar4-badge"></div>
+			</el-badge>
+			<router-link to="/cart" class="tabbar4">购物车</router-link>
+		</div>
 		<router-link to="/user" class="tabbar5">我的</router-link>
 	</div>
 </template>
@@ -21,6 +26,11 @@
 		methods: {
 			
 		},
+		computed:{
+			goods_count:function(){
+				return this.$store.state.cartList.length
+			}
+		}
 	}
 </script>
 
@@ -42,7 +52,7 @@
 		z-index: 999;
 	}
 
-	.tab_bar>a{
+	.tab_bar a{
 		text-decoration: none;
 		color: #929292;
 		display: block;
@@ -96,8 +106,15 @@
 		color : #ff480a;
 	}
 		
-		
-		
+	.tabbar4-badge{
+		position: absolute;
+	}
+	
+	.el-badge{
+		position: absolute;
+		left: 0.5rem;
+		top: 0.1rem;
+	}
 	
 	
 </style>

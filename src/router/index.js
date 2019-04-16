@@ -10,6 +10,7 @@ import Register from '@/components/user/Register'
 import Cart from '@/components/cart/Cart'
 import Amusing from '@/components/amusing/Amusing'
 import Classification from '@/components/classification/Classification'
+import GoodsDetail from '@/components/goods/GoodsDetail'
 
 Vue.use(Router)
 
@@ -34,13 +35,16 @@ export default new Router({
 			name: 'Message',
 			component: Message
 		},
-		
 		{
 			path: '/cart',
 			name: 'Cart',
 			component: Cart
 		},
-		
+		{
+			path: '/goodsdetail/:id',
+			name: 'GoodsDetail',
+			component: GoodsDetail
+		},
 		{
 			path: '/amusing',
 			name: 'Amusing',

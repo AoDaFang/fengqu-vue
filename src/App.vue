@@ -12,14 +12,22 @@
 		components: {
 			'tab-bar': Tabbar
 		},
-		created() { //监听界面跳转，如果是主页几个界面则设置axios的值显示底部导航栏
+		
+		beforeCreate: async function(){
+			
+		},
+		async created() { //监听界面跳转，如果是主页几个界面则设置axios的值显示底部导航栏
+			//store中获取cart
+			this.$store.dispatch("requestCartList")
 
 			this.$router.beforeEach((to, from, next) => {
 				if (to.path == "/home") {
 					this.$store.commit("setisShowTabbar", true);
-				} else if (to.path == "/cart") {
+				} 
+				else if (to.path == "/cart") {
 					this.$store.commit("setisShowTabbar", true);
-				} else if (to.path == "/classification") {
+				} 
+				else if (to.path == "/classification") {
 					this.$store.commit("setisShowTabbar", true);
 				}
 				else if (to.path == "/amusing") {

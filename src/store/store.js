@@ -47,18 +47,29 @@ const store = new Vuex.Store({
 		setisShowTabbar: function(state, title) {
 			state.isShowTabbar = title
 		},
+		
+		setCartList: function(state, list) {
+			state.cartList = list
+		},
 
 	},
 
 	//4.action 表示动作， 要求异步修改state中的值, 需要在这里编写函数
 	actions: {
 		requestCartList: async function() {
-			var res = await api.cartApi.cartList()
+			var user_id = JSON.parse(window.localStorage.user).id
+			var dict = {
+				user_id:user_id
+			}
+			var res = await api.cartApi.cartList(dict)
 			
 			for(var item of res.list){
 				item.isSelected =true
 			}
-			this.cartList = res.list
+			
+			//this.cartList = res.list
+			
+			this.commit("setCartList",res.list);
 			
 		}
 	}
