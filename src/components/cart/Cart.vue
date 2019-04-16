@@ -74,6 +74,7 @@
 					message: '请登录',
 					type: 'warning'
 				});
+				return
 			}
 			this.user = JSON.parse(localStorage.user)
 		},

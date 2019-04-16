@@ -57,11 +57,19 @@ const store = new Vuex.Store({
 	//4.action 表示动作， 要求异步修改state中的值, 需要在这里编写函数
 	actions: {
 		requestCartList: async function() {
+			
+			if(!window.localStorage.user){
+				this.commit("setCartList",[]);
+				return
+			}
+			
 			var user_id = JSON.parse(window.localStorage.user).id
 			var dict = {
 				user_id:user_id
 			}
 			var res = await api.cartApi.cartList(dict)
+			
+			console.log(res)
 			
 			for(var item of res.list){
 				item.isSelected =true

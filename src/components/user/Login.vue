@@ -38,7 +38,7 @@
 				}
 				var res = await this.api.userApi.login(dict)
 				
-				window.localStorage.user = JSON.stringify(res.user)
+				
 				
 				if (res.code == 1) {
 					this.$message({
@@ -46,6 +46,12 @@
 						type: 'success'
 					});
 					window.localStorage.setItem("isLogin", true)
+					
+					//等待设置完毕user后在进行请求操作
+					await window.localStorage.setItem("user", JSON.stringify(res.user))
+					
+					//在store中获取list
+					this.$store.dispatch("requestCartList")
 					this.$router.push('/')
 				}else{
 					this.$message({
