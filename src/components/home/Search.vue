@@ -122,7 +122,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 	.search-head{
 		width: 100%;
 		border-bottom: 1px solid #ebebeb;
@@ -214,7 +214,9 @@
 		text-align: ellipsis;
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
+		 /*! autoprefixer: off */
 		-webkit-box-orient: vertical;
+		/* autoprefixer: on */
 		margin-top: 0.3rem;
 		
 	}

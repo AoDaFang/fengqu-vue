@@ -35,7 +35,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 	.tab_bar{
 		height: 0.9rem;
 		width: 7.5rem;

@@ -152,7 +152,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped >
+<style scoped lang="scss">
 	.cart{
 		width: 100%;
 		background-color: #f2f2f2;
@@ -224,7 +224,9 @@
 		text-align: ellipsis;
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
+		/*! autoprefixer: off */
 		-webkit-box-orient: vertical;
+		/* autoprefixer: on */
 	}
 	.info-money{
 		display: flex;

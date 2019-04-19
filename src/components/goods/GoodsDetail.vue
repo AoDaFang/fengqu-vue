@@ -123,7 +123,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 	.goods {
 		position: relative;
 		width: 100%;
@@ -282,7 +282,9 @@
 		text-align: ellipsis;
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
+		/*! autoprefixer: off */
 		-webkit-box-orient: vertical;
+		/* autoprefixer: on */
 	}
 
 	.mask-goods-price {

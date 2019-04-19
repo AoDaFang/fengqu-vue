@@ -52,7 +52,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 	.navlist {
 		width: 100%;
 		height: 40px;

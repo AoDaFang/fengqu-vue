@@ -245,7 +245,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 	.home-index {}
 
 	.home-index-swiper .swiper-slide {
@@ -361,7 +361,9 @@
 		text-align: ellipsis;
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
+		/*! autoprefixer: off */
 		-webkit-box-orient: vertical;
+		/* autoprefixer: on */
 	}
 
 	.ltn_progress {
@@ -451,7 +453,9 @@
 		text-align: ellipsis;
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
+		/*! autoprefixer: off */
 		-webkit-box-orient: vertical;
+		/* autoprefixer: on */
 	}
 	.home_active_goods_price{
 		font-size: 0.21rem;
@@ -492,7 +496,9 @@
 		text-align: ellipsis;
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
+		/*! autoprefixer: off */
 		-webkit-box-orient: vertical;
+		/* autoprefixer: on */
 		width: 3.14rem;
 		margin: 0.2rem auto;
 	}

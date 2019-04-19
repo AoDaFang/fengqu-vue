@@ -16,9 +16,9 @@ import rem from '@/remjs/rem-config.js'
 require('./mock.js')
 
 //引入mui
-// import './assets/css/mui.css'
-// import mui from './assets/js/mui.js'
-// Vue.prototype.mui = mui
+import './assets/css/mui.css'
+import mui from './assets/js/mui.js'
+Vue.prototype.mui = mui
 
 //引入element ui
 import ElementUI from 'element-ui'; 
